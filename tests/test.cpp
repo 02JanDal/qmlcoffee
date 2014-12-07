@@ -18,6 +18,7 @@ private slots:
 	void initTestCase()
 	{
 		executable = QStandardPaths::findExecutable("coffee");
+		Q_ASSERT(!executable.isEmpty());
 	}
 
 	void testPropertyBindings()

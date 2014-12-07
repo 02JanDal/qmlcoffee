@@ -1,0 +1,20 @@
+language: cpp
+compiler:
+ - gcc
+ - clang
+cache: apt
+before_install:
+ - sudo apt-add-repository -y ppa:beineri/opt-qt521
+ - sudo apt-add-repository -y ppa:kalakris/cmake
+ - sudo apt-get update -qq
+install:
+ - sudo apt-get install -y -qq cmake qt52base
+ - npm install -g coffee-script
+before_script:
+ - mkdir build
+ - cd build
+ - cmake -DCMAKE_PREFIX_PATH=/opt/qt52/lib/cmake ..
+script:
+ - make -j4
+ - which coffee
+ - tests/tst_qmlcoffee

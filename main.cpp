@@ -29,6 +29,11 @@ int main(int argc, char **argv)
 	QFile *out = fileFor(parser.value("output"), QIODevice::WriteOnly);
 
 	executable = parser.value("coffeescript");
+	if (executable.isEmpty())
+	{
+		qFatal("CoffeeScript compiler not set");
+		return 1;
+	}
 
 	QString type = parser.value("type");
 	if (type == "detect")
